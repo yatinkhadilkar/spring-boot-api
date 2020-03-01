@@ -22,10 +22,10 @@ jobs:
 
     steps:
       - uses: d3sandoval/cloud-foundry-action@1.1.1
-        with:
+        env:
           CF_API: https://donotuseapi.run.pivotal.io
           CF_USERNAME: ${{ secrets.CF_USER }}
           CF_PASSWORD: ${{ secrets.CF_PASSWORD }}
           CF_TARGET_ORG: cf-demo-org
           CF_TARGET_SPACE: test
-          run: cf push spring-boot-api
+        run: cf push spring-boot-api
