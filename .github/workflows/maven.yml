@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: citizen-of-planet-earth/cf-cli-action@master
         with:
-          cf_api: https://api.run.pcfone.io
+          cf_api: https://donotuseapi.run.pivotal.io
           cf_username: ${{ secrets.CF_USER }}
           cf_password: ${{ secrets.CF_PASSWORD }}
           cf_org: cf-demo-org
