@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: d3sandoval/cloud-foundry-action@1.1.1
         with:
-          cf_api: https://donotuseapi.run.pivotal.io
+          CF_API: https://donotuseapi.run.pivotal.io
           CF_USERNAME: ${{ secrets.CF_USER }}
           CF_PASSWORD: ${{ secrets.CF_PASSWORD }}
           CF_TARGET_ORG: cf-demo-org
