@@ -21,11 +21,11 @@ jobs:
     needs: build
 
     steps:
-      - uses: citizen-of-planet-earth/cf-cli-action@master
+      - uses: d3sandoval/cloud-foundry-action@1.1.1
         with:
           cf_api: https://donotuseapi.run.pivotal.io
-          cf_username: ${{ secrets.CF_USER }}
-          cf_password: ${{ secrets.CF_PASSWORD }}
-          cf_org: cf-demo-org
-          cf_space: test
-          command: push -f manifest.yml
+          CF_USERNAME: ${{ secrets.CF_USER }}
+          CF_PASSWORD: ${{ secrets.CF_PASSWORD }}
+          CF_TARGET_ORG: cf-demo-org
+          CF_TARGET_SPACE: test
+          run: cf push spring-boot-api
