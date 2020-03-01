@@ -15,3 +15,17 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+
+  deploy:
+    runs-on: ubuntu-18.04
+    needs: build
+
+    steps:
+      - uses: citizen-of-planet-earth/cf-cli-action@master
+        with:
+          cf_api: https://api.run.pcfone.io
+          cf_username: ${{ secrets.CF_USER }}
+          cf_password: ${{ secrets.CF_PASSWORD }}
+          cf_org: cf-demo-org
+          cf_space: test
+          command: push -f manifest.yml
