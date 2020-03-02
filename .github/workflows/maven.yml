@@ -28,9 +28,9 @@ jobs:
 
     steps:
       - name: Download JAR
-          uses: actions/download-artifact@v1
-          with:
-            name: spring-boot-api
+        uses: actions/download-artifact@v1
+        with:
+          name: spring-boot-api
       - uses: d3sandoval/cloud-foundry-action@1.1.1
         with:
           args: push spring-boot-api --random-route
