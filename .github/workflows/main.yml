@@ -1,4 +1,4 @@
-name: CI
+name: OCI Image built - Cloud Native Buildpacks
 
 on: [push]
 
@@ -8,10 +8,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@master
+    - name: docker-login
+      uses: "actions/docker/login@master"
+      env:
+        DOCKER_USERNAME: ${{ secrets.DockerUsername }}
+        DOCKER_PASSWORD: ${{ secrets.DockerPassword }}
+
     - uses: actions/checkout@v2
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
+    - name: Build Image
       run: |
-        echo Building OCI image,
+        echo Building OCI image
         ./mvnw spring-boot:build-image
+        docker push ykhadilkar/spring-boot-api:0.0.1-SNAPSHOT
