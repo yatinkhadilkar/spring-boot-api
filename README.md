@@ -2,4 +2,6 @@
 
 # spring-boot-api
 
-Spring boot version 2.3.0
+- Spring boot version 2.3.0.
+- Sample Spring boot app CD pipeline using GitHub actions. 
+- App is being deployed to PCF using `cf push`.
