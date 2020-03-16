@@ -12,4 +12,6 @@ jobs:
         echo Building OCI image
         ./mvnw spring-boot:build-image
         docker login -u ${{ secrets.DockerUsername }} -p ${{ secrets.DockerPassword }}
-        docker push spring-boot-api
+        echo updating docker image tag 
+        docker tag spring-boot-api:0.0.1-SNAPSHOT ykhadilkar/spring-boot-api:0.0.1-SNAPSHOT
+        docker push ykhadilkar/spring-boot-api:0.0.1-SNAPSHOT
