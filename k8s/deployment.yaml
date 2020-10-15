@@ -21,4 +21,12 @@ spec:
       - image: harbor.lab.khadilkar.net/demo/spring-boot-api
         name: spring-boot-api
         resources: {}
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /actuator/health/readiness
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /actuator/health/liveness
 status: {}

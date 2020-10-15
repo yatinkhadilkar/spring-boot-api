@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: spring-boot-api-ingress
+  namespace: default
+spec:
+  rules:
+    - host: spring-boot-api.apps.tkgi.lab.khadilkar.net
+      http:
+        paths:
+          - backend:
+              serviceName: spring-boot-api
+              servicePort: 80
+            path: /
+            pathType: ImplementationSpecific
