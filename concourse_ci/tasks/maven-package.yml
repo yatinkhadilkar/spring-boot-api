@@ -1,0 +1,22 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: maven
+    tag: 3.6.3-jdk-11-alpine
+
+inputs:
+  - name: spring-boot-service
+
+run:
+  path: "mvn"
+  args:
+    - -f
+    - spring-boot-service/pom.xml
+    - spring-boot:build-image
+    
+outputs:
+  - name: spring-boot-service-out
+    path: spring-boot-service
