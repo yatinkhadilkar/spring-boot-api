@@ -29,4 +29,15 @@ spec:
           httpGet:
             port: 8080
             path: /actuator/health/liveness
+        env:
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: password
 status: {}
