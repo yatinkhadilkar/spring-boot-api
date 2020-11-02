@@ -38,16 +38,13 @@ jobs:
       - task: mvn-test
         file: "spring-boot-service/concourse_ci/tasks/maven-test.yml"
 
-  - name: package
+  - name: publish
     public: true
     serial: true
     plan:
       - get: spring-boot-service
         trigger: true
         passed: [test]
-      - task: build-image
-        privileged: true
-        file: "spring-boot-service/concourse_ci/tasks/build-image.yml"
       - put: spring-boot-service-docker-repository
         params:
           build: spring-boot-service-out
@@ -58,7 +55,7 @@ jobs:
     plan:
       - get: spring-boot-service
         trigger: false
-        passed: [package]
+        passed: [publish]
 
       - put: kubectl
         params:
