@@ -1,7 +1,7 @@
 ---
 applications:
   - name: spring-boot-api
-    memory: 512M
+    memory: 1G
     instances: 1
     path: target/spring-boot-api-0.0.1-SNAPSHOT.jar
     random-route: true

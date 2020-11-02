@@ -2,21 +2,12 @@
 platform: linux
 
 image_resource:
-  type: docker-image
+  type: registry-image
   source:
-    repository: maven
-    tag: 3.6.3-openjdk-11-slim
-
+    repository: vito/oci-build-task
 inputs:
   - name: spring-boot-service
-
-run:
-  path: "mvn"
-  args:
-    - -f
-    - spring-boot-service/pom.xml
-    - spring-boot:build-image
-    
 outputs:
   - name: spring-boot-service-out
-    path: spring-boot-service
+run:
+  path: build
