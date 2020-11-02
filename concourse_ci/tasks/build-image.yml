@@ -1,6 +1,5 @@
 ---
 platform: linux
-
 image_resource:
   type: registry-image
   source:
@@ -9,5 +8,7 @@ inputs:
   - name: spring-boot-service
 outputs:
   - name: spring-boot-service-out
+params:
+  CONTEXT: spring-boot-service
 run:
   path: build
