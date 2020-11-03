@@ -1,0 +1,9 @@
+# Harbor
+registry_user: <harbor-username>
+registry_pass: <harbor-password>
+# registry URL e.g. harbor.example.com:443/demo/spring-boot-api
+registry_url: <harbor-registry-url>
+ca_cert: |
+  -----BEGIN CERTIFICATE-----
+  <Harbor CA Cert Here>
+  -----END CERTIFICATE-----

@@ -1,0 +1,37 @@
+resources:
+  - name: spring-boot-service
+    type: git
+    source:
+      uri: https://github.com/ykhadilkar/spring-boot-api.git
+      branch: master
+
+  - name: harbor
+    type: docker-image
+    source:
+      email: ((docker-hub-email))
+      username: ((registry_user))
+      password: ((registry_pass))
+      repository: ((registry_url))
+      ca_certs:
+        - domain: harbor.lab.khadilkar.net:443
+          cert: ((ca_cert))
+jobs:
+  - name: test
+    public: true
+
+    plan:
+      - get: spring-boot-service
+        trigger: true
+      - task: mvn-test
+        file: "spring-boot-service/concourse_ci/tasks/maven-test.yml"
+
+  - name: publish
+    public: true
+    serial: true
+    plan:
+      - get: spring-boot-service
+        trigger: true
+        passed: [test]
+      - put: harbor
+        params:
+          build: spring-boot-service

@@ -7,3 +7,11 @@
 - Spring boot version 2.3.0.
 - Sample Spring boot app CD pipeline using GitHub actions. 
 - App is being deployed to PCF using `cf push`.
+
+
+# Concourse CI
+Sample concourse pipeline runs `mvn test` and if passed creates and pushes Docker image to internal harbor registry
+
+
+###Create pipeline
+```fly -t tutorial set-pipeline -p spring-boot-harbor -c concourse_ci/pipeline-harbor.yml -l concourse_ci/config.yml```
