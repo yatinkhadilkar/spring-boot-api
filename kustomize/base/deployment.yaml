@@ -6,7 +6,7 @@ metadata:
     app: spring-boot-api
   name: spring-boot-api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: spring-boot-api
@@ -18,7 +18,7 @@ spec:
         app: spring-boot-api
     spec:
       containers:
-      - image: harbor.lab.khadilkar.net/demo/spring-boot-api
+      - image: ykhadilkar/spring-boot-api:latest
         name: spring-boot-api
         resources: {}
         readinessProbe:
