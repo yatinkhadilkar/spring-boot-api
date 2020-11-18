@@ -1,0 +1,10 @@
+replicaCount: 1
+
+image:
+  repository: ykhadilkar/spring-boot-api
+  pullPolicy: IfNotPresent
+  tag: dev
+
+# Replace during chart creation inline
+secret:
+  password: t0p-Secret

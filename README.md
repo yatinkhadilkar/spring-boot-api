@@ -15,3 +15,17 @@ Sample concourse pipeline runs `mvn test` and if passed creates and pushes Docke
 
 ###Create pipeline
 ```fly -t tutorial set-pipeline -p spring-boot-harbor -c concourse_ci/pipeline-harbor.yml -l concourse_ci/config.yml```
+
+# Helm Deployment
+```shell script
+helm install spring-boot-api ./spring-boot-api-chart -f ./spring-boot-api-chart/values/qa.yaml --set secret.password=hello
+```
+
+#Kustomize Deployment
+```shell script
+kubectl apply -k ./kustomize/base
+```
+or
+```shell script
+kustomize build ./kustomize/overlays/qa | kubectl apply -f -
+```
