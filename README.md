@@ -21,7 +21,7 @@ Sample concourse pipeline runs `mvn test` and if passed creates and pushes Docke
 helm install spring-boot-api ./spring-boot-api-chart -f ./spring-boot-api-chart/values/qa.yaml --set secret.password=hello
 ```
 
-#Kustomize Deployment
+# Kustomize Deployment
 ```shell script
 kubectl apply -k ./kustomize/base
 ```
